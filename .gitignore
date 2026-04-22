@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node
+node_modules/
+
+# Build/test artifacts
+dist/
+build/
+coverage/
+*.log
