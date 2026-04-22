@@ -1,25 +1,61 @@
-# textbook_finder
+# Textbook Finder
 
-This repository includes baseline CI/CD workflows and shared configuration files.
+A launchable and testable full-stack textbook search demo app.
 
-## Included automation
+## Project structure
 
-- **CI** (`.github/workflows/ci.yml`)
-  - checks for required baseline config files
-  - validates YAML syntax/style
-  - lints Markdown files
+- `frontend/`: React + Vite web app for searching textbook listings.
+- `backend/`: FastAPI service with textbook search, download simulation, and library APIs.
 
-- **CD** (`.github/workflows/cd.yml`)
-  - triggers on semantic-version tags (for example: `v1.0.0`)
-  - builds a source archive
-  - publishes a GitHub release with generated notes
+## Prerequisites
 
-## Optional local hooks
+- Node.js 20+
+- Python 3.11+
 
-Install and run pre-commit hooks:
+## Run the app locally
+
+### 1) Start the backend API
 
 ```bash
-pip install pre-commit
-pre-commit install
-pre-commit run --all-files
+cd backend
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Backend health check: <http://localhost:8000/health>
+
+### 2) Start the frontend site
+
+```bash
+cd frontend
+npm install
+npm run dev -- --host 0.0.0.0 --port 5173
+```
+
+Open: <http://localhost:5173>
+
+## Test the app
+
+### Frontend tests
+
+```bash
+cd frontend
+npm test
+```
+
+### Backend tests
+
+```bash
+cd backend
+source .venv/bin/activate
+pytest -q
+```
+
+## Build frontend
+
+```bash
+cd frontend
+npm run build
 ```
