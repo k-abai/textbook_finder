@@ -1,0 +1,114 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #172034;
+  background-color: #f3f6ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+h1 {
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  margin-top: 0;
+  color: #4a5a78;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 1.25rem 0;
+  font-weight: 600;
+}
+
+.search-bar input {
+  border: 1px solid #ccd6eb;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+.result-count {
+  margin: 0.5rem 0 1rem;
+  color: #4a5a78;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid #d8e1f2;
+  border-radius: 14px;
+  padding: 1rem;
+  background: white;
+}
+
+.card header {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.meta {
+  margin: 0.3rem 0;
+  color: #506180;
+}
+
+.price {
+  font-size: 1.25rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  white-space: nowrap;
+}
+
+.badge.in_stock {
+  background: #daf5e1;
+  color: #166534;
+}
+
+.badge.limited {
+  background: #fff3ce;
+  color: #8a6200;
+}
+
+.badge.out_of_stock {
+  background: #ffe0e0;
+  color: #9b1c1c;
+}
+
+.empty-state {
+  margin-top: 1.2rem;
+  color: #9b1c1c;
+}
