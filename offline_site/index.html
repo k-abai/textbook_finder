@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Textbook Finder (Offline Mode)</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; max-width: 900px; }
+      input { width: 100%; padding: 0.75rem; font-size: 1rem; }
+      .card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin: 0.75rem 0; }
+      .muted { color: #555; }
+    </style>
+  </head>
+  <body>
+    <h1>Textbook Finder</h1>
+    <p class="muted">Offline fallback mode (no npm or pip dependencies required).</p>
+    <input id="q" type="search" placeholder="Search by title, author, or ISBN" />
+    <p id="count" class="muted"></p>
+    <div id="results"></div>
+    <script>
+      const books = [
+        { title: "Calculus: Early Transcendentals", author: "Stewart", isbn: "9781285741550" },
+        { title: "University Physics", author: "Young & Freedman", isbn: "9780135159552" },
+        { title: "Organic Chemistry", author: "Clayden", isbn: "9780199270293" },
+        { title: "Introduction to Algorithms", author: "Cormen", isbn: "9780262046305" },
+        { title: "Campbell Biology", author: "Urry", isbn: "9780135188743" }
+      ];
+
+      const q = document.getElementById("q");
+      const results = document.getElementById("results");
+      const count = document.getElementById("count");
+
+      function render() {
+        const needle = q.value.trim().toLowerCase();
+        const filtered = books.filter((b) =>
+          `${b.title} ${b.author} ${b.isbn}`.toLowerCase().includes(needle)
+        );
+        count.textContent = `Showing ${filtered.length} of ${books.length} books`;
+        results.innerHTML = filtered
+          .map(
+            (b) => `<div class="card"><strong>${b.title}</strong><br/><span>${b.author}</span><br/><small>${b.isbn}</small></div>`
+          )
+          .join("");
+      }
+
+      q.addEventListener("input", render);
+      render();
+    </script>
+  </body>
+</html>
